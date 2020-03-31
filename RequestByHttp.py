@@ -54,7 +54,6 @@ def do_inference(hostport, work_dir, concurrency, num_tests):
       datajson['instances'].append({'input':cur_feature[j,:].tolist()}) ## key->input 是在save_model时定义的输入名称 ##
     #print ('index=', index, 'cur_feature.shape=', cur_feature.shape, 'cur_feature=', cur_feature)
     btime = time.time()
-    #r = requests.post('http://10.175.214.88:8501/v1/models/seq_model:predict', json=datajson)  ## here /v1/ 是要写的 ##
     r = requests.post('http://'+hostport+'/v1/models/seq_model:predict', json=datajson)  ## here /v1/ 是要写的 ##
     etime = time.time()
     atime.append(etime-btime)
